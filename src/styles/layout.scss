@@ -1,0 +1,19 @@
+#layout {
+  display: flex;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+#main {
+  flex: 1;
+}
+
+// Sider
+#aside {
+  .menu {
+    min-height: 100vh;
+    &:not(.el-menu--collapse) {
+      width: 200px;
+    }
+  }
+}
