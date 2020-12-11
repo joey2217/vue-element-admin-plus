@@ -3,7 +3,9 @@
     <Sider />
     <main id="main">
       <AppHeader />
-      <section>Main</section>
+      <section>
+        <router-view />
+      </section>
     </main>
   </div>
 </template>

@@ -1,52 +1,88 @@
 <template>
-  <aside id="aside">
-    <el-menu
-      default-active="1-4-1"
-      class="menu"
-      :collapse="isCollapse"
-    >
-      <el-submenu index="1">
-        <template #title>
-          <i class="el-icon-location"></i>
-          <span>导航一</span>
-        </template>
-        <el-menu-item-group>
-          <template #title>分组一</template>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="1-4">
-          <template #title>选项4</template>
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
-        </el-submenu>
-      </el-submenu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <template #title>导航二</template>
-      </el-menu-item>
-      <el-menu-item index="3" disabled>
-        <i class="el-icon-document"></i>
-        <template #title>导航三</template>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <i class="el-icon-setting"></i>
-        <template #title>导航四</template>
-      </el-menu-item>
-    </el-menu>
+  <aside
+    id="aside"
+    :style="{
+      width: isCollapse ? '64px' : '200px',
+    }"
+  >
+    <Logo />
+    <el-scrollbar wrap-class="menu-scrollbar">
+      <el-menu
+        default-active="/"
+        :collapse="isCollapse"
+        :background-color="backgroundColor"
+        :text-color="textColor"
+        :active-text-color="activeTextColor"
+        mode="vertical"
+        router
+      >
+        <MenuItem
+          v-for="menu in menus"
+          :menu="menu"
+          :key="menu.fullPath"
+          :path="menu.fullPath"
+          :title="menu.title"
+        />
+      </el-menu>
+    </el-scrollbar>
   </aside>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
+import { useStore } from 'vuex';
+import Logo from './Logo.vue';
+import MenuItem, { Menu } from './MenuItem.vue';
+
+const menus: Menu[] = [
+  {
+    fullPath: '/user',
+    title: 'User',
+    icon: 'user',
+  },
+  {
+    fullPath: '/menu',
+    title: 'Menu',
+    icon: 'Menu',
+    redirect: '/menu/menu1/menu1-1',
+    children: [
+      {
+        fullPath: '/menu/menu1',
+        title: 'Menu1',
+        redirect: '/menu/menu1/menu1-1',
+        children: [
+          {
+            fullPath: '/menu/menu1/menu1-1',
+            title: 'Menu1-1',
+          },
+          {
+            fullPath: '/menu/menu1/menu1-2',
+            title: 'Menu1-2',
+          },
+        ],
+      },
+      {
+        fullPath: '/menu/menu2',
+        title: 'Menu2',
+      },
+    ],
+  },
+];
 
 export default defineComponent({
   name: 'Sider',
+  components: {
+    Logo,
+    MenuItem,
+  },
   setup() {
+    const store = useStore();
     return {
-      isCollapse: true,
+      isCollapse: computed(() => store.state.app.isCollapse),
+      backgroundColor: '#001529',
+      textColor: '#fff',
+      activeTextColor: '#409EFF',
+      menus,
     };
   },
 });
