@@ -3,6 +3,15 @@ const path = require('path');
 
 module.exports = {
   publicPath: '/',
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'https://vue-element-admin-plus.vercel.app/',
+        ws: true,
+        changeOrigin: true,
+      },
+    },
+  },
   chainWebpack(config) {
     // it can improve the speed of the first screen, it is recommended to turn on preload
     config.plugin('preload').tap(() => [

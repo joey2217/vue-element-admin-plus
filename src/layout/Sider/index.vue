@@ -16,13 +16,7 @@
         mode="vertical"
         router
       >
-        <MenuItem
-          v-for="menu in menus"
-          :menu="menu"
-          :key="menu.fullPath"
-          :path="menu.fullPath"
-          :title="menu.title"
-        />
+        <Menu />
       </el-menu>
     </el-scrollbar>
   </aside>
@@ -32,48 +26,13 @@
 import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
 import Logo from './Logo.vue';
-import MenuItem, { Menu } from './MenuItem.vue';
-
-const menus: Menu[] = [
-  {
-    fullPath: '/user',
-    title: 'User',
-    icon: 'user',
-  },
-  {
-    fullPath: '/menu',
-    title: 'Menu',
-    icon: 'Menu',
-    redirect: '/menu/menu1/menu1-1',
-    children: [
-      {
-        fullPath: '/menu/menu1',
-        title: 'Menu1',
-        redirect: '/menu/menu1/menu1-1',
-        children: [
-          {
-            fullPath: '/menu/menu1/menu1-1',
-            title: 'Menu1-1',
-          },
-          {
-            fullPath: '/menu/menu1/menu1-2',
-            title: 'Menu1-2',
-          },
-        ],
-      },
-      {
-        fullPath: '/menu/menu2',
-        title: 'Menu2',
-      },
-    ],
-  },
-];
+import Menu from './Menu.vue';
 
 export default defineComponent({
   name: 'Sider',
   components: {
     Logo,
-    MenuItem,
+    Menu,
   },
   setup() {
     const store = useStore();
@@ -82,7 +41,6 @@ export default defineComponent({
       backgroundColor: '#001529',
       textColor: '#fff',
       activeTextColor: '#409EFF',
-      menus,
     };
   },
 });
