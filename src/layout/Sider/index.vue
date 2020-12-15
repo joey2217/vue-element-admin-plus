@@ -16,7 +16,7 @@
         mode="vertical"
         router
       >
-        <Menu />
+        <Menu :menus="menus" />
       </el-menu>
     </el-scrollbar>
   </aside>
@@ -27,6 +27,7 @@ import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
 import Logo from './Logo.vue';
 import Menu from './Menu.vue';
+import { RootState } from '@/store';
 
 export default defineComponent({
   name: 'Sider',
@@ -35,9 +36,10 @@ export default defineComponent({
     Menu,
   },
   setup() {
-    const store = useStore();
+    const store = useStore<RootState>();
     return {
       isCollapse: computed(() => store.state.app.isCollapse),
+      menus: computed(() => store.state.user.menus),
       backgroundColor: '#001529',
       textColor: '#fff',
       activeTextColor: '#409EFF',

@@ -25,10 +25,11 @@
             },
           ]"
         >
-          <template #label>
-            <svg-icon iconClass="user" />
-          </template>
-          <el-input v-model.trim="form.username" placeholder="Username"></el-input>
+          <el-input v-model.trim="form.username" placeholder="Username">
+            <template #prefix>
+              <svg-icon iconClass="user" className="input__icon" />
+            </template>
+          </el-input>
         </el-form-item>
         <el-form-item
           props="password"
@@ -45,15 +46,16 @@
             },
           ]"
         >
-          <template #label>
-            <svg-icon iconClass="user" />
-          </template>
           <el-input
             v-model.trim="form.password"
             type="password"
             show-password
             placeholder="Password"
-          ></el-input>
+          >
+            <template #prefix>
+              <svg-icon iconClass="user" className="input__icon" />
+            </template>
+          </el-input>
         </el-form-item>
         <el-form-item>
           <el-button
@@ -124,22 +126,6 @@ export default defineComponent({
     margin-bottom: 15vh;
     .login-btn {
       width: 100%;
-    }
-  }
-}
-</style>
-
-<style lang="scss">
-#login-form {
-  .el-form-item {
-    position: relative;
-    .el-form-item__label {
-      position: absolute;
-      left: 10px;
-      z-index: 2;
-    }
-    .el-input__inner {
-      padding: 0 15px 0 30px;
     }
   }
 }

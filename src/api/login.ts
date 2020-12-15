@@ -21,10 +21,18 @@ export interface MenuItem {
   icon?: string;
   children?: MenuItem[];
 }
-// 获取菜单
-export function getMenus(): AxiosPromise<MenuItem[]> {
+
+export interface UserInfo {
+  username: string;
+  nickname: string;
+  roles: string[];
+  menus: MenuItem[];
+  avatar?: string;
+}
+// 获取用户信息
+export function getUserInfo(): AxiosPromise<UserInfo> {
   return request({
-    url: '/menu',
+    url: '/user-info',
     method: 'GET',
   });
 }

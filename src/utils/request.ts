@@ -1,4 +1,5 @@
 import axios from 'axios';
+import store from '@/store';
 
 const request = axios.create({
   baseURL: '/api',
@@ -6,8 +7,12 @@ const request = axios.create({
   timeout: 5000,
 });
 
+const HEADER_KEY = 'Token';
+
 request.interceptors.request.use(
   config => {
+    const token = store.getters.token;
+    config.headers[HEADER_KEY] = token;
     return config;
   },
   error => {

@@ -13,6 +13,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Login',
     component: Login,
   },
+  // TODO
+  { path: '/:pathMatch(.*)*', name: 'not-found', component: Layout },
 ];
 
 export default routes;

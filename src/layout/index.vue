@@ -3,9 +3,7 @@
     <Sider />
     <main id="main">
       <AppHeader />
-      <section>
-        <router-view />
-      </section>
+      <AppMain />
     </main>
   </div>
 </template>
@@ -14,14 +12,16 @@
 import { defineComponent } from 'vue';
 import AppHeader from './AppHeader.vue';
 import Sider from './Sider/index.vue';
+import AppMain from './AppMain.vue';
 
 export default defineComponent({
   name: 'Layout',
   components: {
     AppHeader,
     Sider,
+    AppMain,
   },
-  setup(props, { attrs, slots, emit }) {
+  setup() {
     return {};
   },
 });

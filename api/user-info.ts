@@ -24,7 +24,7 @@ const menus: Menu[] = [
   {
     fullPath: '/menu',
     title: 'Menu',
-    icon: 'Menu',
+    icon: 'menu',
     redirect: '/menu/menu1/menu1-1',
     children: [
       {
@@ -54,7 +54,7 @@ export default (request: NowRequest, response: NowResponse) => {
   const userInfo: UserInfo = {
     nickname,
     username: Random.first(),
-    roles: [],
+    roles: ['admin'],
     menus,
     avatar: Random.image('100x100', '#4A7BF7', nickname.slice(0, 1)),
   };

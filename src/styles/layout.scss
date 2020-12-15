@@ -1,4 +1,5 @@
 $header-height: 64px;
+$menu-width: 200px;
 
 #layout {
   display: flex;
@@ -20,22 +21,37 @@ $header-height: 64px;
   .logo {
     height: $header-height;
     line-height: $header-height;
-    background-color: #fff;
-    color: #333;
+    background-color: #001529;
+    color: #fff;
+    width: $menu-width;
+    overflow: hidden;
     display: flex;
     .icon {
       text-align: center;
       width: 64px;
+      padding: 7px 0;
+      cursor: pointer;
+    }
+    .title {
+      text-align: center;
+      flex: 1;
     }
   }
   .menu-scrollbar {
     height: calc(100vh - 64px);
+    .el-scrollbar__bar.is-vertical {
+      right: 0px;
+    }
   }
   .el-menu {
     border-right: none;
     transition: width 0.2s;
+    .menu-icon{
+      font-size: 20px;
+      margin-right: 22px;
+    }
     &:not(.el-menu--collapse) {
-      width: 200px;
+      width: $menu-width;
     }
   }
 }
@@ -53,6 +69,6 @@ $header-height: 64px;
   height: 64px;
   text-align: center;
 }
-#trigger.active .svg-icon{
+#trigger.active .svg-icon {
   transform: rotate(180deg);
 }
