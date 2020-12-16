@@ -29,7 +29,7 @@ export default (request: NowRequest, response: NowResponse) => {
   const total = 65;
   let num = size;
   const max = Math.ceil(total / size);
-  if (num === max) {
+  if (page === max) {
     num = total % size;
   } else if (num > max) {
     num = 0;

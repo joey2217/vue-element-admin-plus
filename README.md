@@ -1,3 +1,3 @@
 # vue-element-admin-plus
 
-https://element-plus.gitee.io/#/zh-CN/component/quickstart
+> [Vue3](https://v3.vuejs.org/) + [Element+](https://element-plus.org/) admin interfaces
