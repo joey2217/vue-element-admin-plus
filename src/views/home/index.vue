@@ -1,16 +1,23 @@
 <template>
-  <div>
-    Home
+  <div class="container">
+    <div class="card">
+      <h3>Name:{{ name }}</h3>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
+import { useStore } from 'vuex';
+import { RootState } from '@/store';
 
 export default defineComponent({
   name: 'Home',
   setup() {
-    return {};
+    const store = useStore<RootState>();
+    return {
+      name: computed(() => store.state.user.nickname),
+    };
   },
 });
 </script>

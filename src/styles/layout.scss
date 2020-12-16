@@ -11,6 +11,13 @@ $menu-width: 200px;
   flex: 1;
 }
 
+#content {
+  padding: 16px 24px;
+  height: calc(100vh - 96px);
+  overflow: auto;
+  background-color: #f0f2f5;
+}
+
 // Sider
 #aside {
   background-color: #001529;
@@ -39,16 +46,17 @@ $menu-width: 200px;
   }
   .menu-scrollbar {
     height: calc(100vh - 64px);
-    .el-scrollbar__bar.is-vertical {
-      right: 0px;
-    }
+    overflow-x: hidden !important;
+  }
+  .el-scrollbar__bar.is-horizontal {
+    display: none;
   }
   .el-menu {
     border-right: none;
     transition: width 0.2s;
-    .menu-icon{
-      font-size: 20px;
-      margin-right: 22px;
+    .menu-icon {
+      font-size: 16px;
+      margin-right: 28px;
     }
     &:not(.el-menu--collapse) {
       width: $menu-width;
@@ -61,6 +69,19 @@ $menu-width: 200px;
   line-height: $header-height;
   box-shadow: 0 2px 8px #f0f1f2;
   padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .block {
+    cursor: pointer;
+    height: 100%;
+    &:hover {
+      background-color: #00000006;
+    }
+  }
+}
+#avatar {
+  margin:0 20px;
 }
 #trigger {
   font-size: 20px;

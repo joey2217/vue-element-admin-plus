@@ -120,6 +120,7 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(102.7deg,#fddaff 8.2%,#dfadfc 19.6%,#adcdfc 36.8%,#adfcf4 73.2%,#caf8d0 90.9%);
   .login-card {
     width: 100%;
     max-width: 500px;

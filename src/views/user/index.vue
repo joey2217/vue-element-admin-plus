@@ -1,6 +1,8 @@
 <template>
-  <div>
-    Error
+  <div class="content">
+    <div class="card">
+      User
+    </div>
   </div>
 </template>
 
@@ -8,7 +10,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'Error',
+  name: 'User',
   setup() {
     return {};
   },

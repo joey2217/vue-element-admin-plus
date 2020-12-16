@@ -16,6 +16,12 @@
         mode="vertical"
         router
       >
+        <el-menu-item index="/">
+          <SvgIcon iconClass="home" className="menu-icon" />
+          <template #title>
+            <span>Home</span>
+          </template>
+        </el-menu-item>
         <Menu :menus="menus" />
       </el-menu>
     </el-scrollbar>

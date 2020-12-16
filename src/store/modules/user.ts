@@ -1,13 +1,15 @@
+import { toRaw } from 'vue';
 import { Module } from 'vuex';
 import { RootState } from '../index';
 import { login, LoginData, MenuItem, getUserInfo } from '@/api/login';
-
+import { flatTree } from '@/utils';
 export interface State {
   token: string;
   username: string;
   nickname: string;
   roles: string[];
   menus: MenuItem[];
+  flatMenus: MenuItem[];
   avatar: string;
 }
 
@@ -19,6 +21,7 @@ const initState: () => State = () => ({
   nickname: '',
   roles: [],
   menus: [],
+  flatMenus: [],
   avatar: '',
 });
 
@@ -40,9 +43,20 @@ const user: Module<State, RootState> = {
     },
     SET_MENUS: (state, payload: MenuItem[]) => {
       state.menus = payload;
+      state.flatMenus = flatTree(payload);
     },
     SET_AVATAR: (state, payload: string) => {
       state.avatar = payload;
+    },
+    RESET: (state) => {
+      localStorage[TOKEN_KEY] = '';
+      state.token = '';
+      state.username = '';
+      state.nickname = '';
+      state.roles = [];
+      state.menus = [];
+      state.flatMenus = [];
+      state.avatar = '';
     },
   },
   actions: {
@@ -58,10 +72,15 @@ const user: Module<State, RootState> = {
       commit('SET_MENUS', menus);
       commit('SET_AVATAR', avatar);
     },
+    logout({ commit }) {
+      // TODO backend logout
+      commit('RESET');
+    },
   },
   getters: {
     token: state => state.token,
     username: state => state.username,
+    flatMenus: state => toRaw(state.flatMenus),
   },
 };
 

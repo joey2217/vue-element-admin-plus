@@ -13,7 +13,6 @@ export default defineComponent({
     },
   },
   setup(props) {
-    //  TODO
     const generateMenus = (menus: MenuItem[]) =>
       menus.map((menu) => {
         if (menu.children && menu.children.length > 0) {
@@ -26,7 +25,7 @@ export default defineComponent({
               default: () => menu.children && generateMenus(menu.children),
               title: () =>
                 h(Fragment, [
-                  menu.icon && h(SvgIcon, { iconClass: menu.icon, class: 'menu-icon' }),
+                  menu.icon && h(SvgIcon, { iconClass: menu.icon, className: 'menu-icon' }),
                   menu.title,
                 ]),
             },
@@ -38,7 +37,7 @@ export default defineComponent({
               index: menu.fullPath,
             },
             {
-              default: () => menu.icon && h(SvgIcon, { iconClass: menu.icon, class: 'menu-icon' }),
+              default: () => menu.icon && h(SvgIcon, { iconClass: menu.icon, className: 'menu-icon' }),
               // default: () => menu.icon && h('i', { iconClass: menu.icon, class: 'el-icon-location' }),
               title: () => h(Fragment, [menu.title]),
             },

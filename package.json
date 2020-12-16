@@ -12,6 +12,7 @@
     "axios": "^0.21.0",
     "core-js": "^3.6.5",
     "element-plus": "^1.0.1-beta.7",
+    "lodash": "^4.17.20",
     "nprogress": "^0.2.0",
     "vue": "^3.0.4",
     "vue-router": "^4.0.1",
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",
+    "@types/lodash": "^4.14.165",
     "@types/mockjs": "^1.0.3",
     "@types/node": "^14.14.12",
     "@types/nprogress": "^0.2.0",

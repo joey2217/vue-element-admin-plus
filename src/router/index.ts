@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, RouteLocationNormalized } from 'vue-router';
 import routes from './routes';
 import store from '@/store';
 import NProgress from 'nprogress';
@@ -11,11 +11,22 @@ const router = createRouter({
 
 export default router;
 
-const allowList = ['/login'];
+const authAccess = (to: RouteLocationNormalized): boolean => {
+  if (to.meta.auth) {
+    const flatMenus = store.getters.flatMenus;
+    const index = flatMenus && (flatMenus as any[]).findIndex(menu => menu.fullPath === to.path);
+    // TODO permission
+    return index !== -1;
+  } else {
+    return true;
+  }
+};
+
+const AllowList: string[] = ['/login'];
 
 router.beforeEach(async (to, from) => {
   NProgress.start();
-  if (allowList.includes(to.path)) {
+  if (AllowList.includes(to.path)) {
     return true;
   } else {
     const token = store.getters.token;
@@ -41,7 +52,13 @@ router.beforeEach(async (to, from) => {
 });
 
 router.beforeEach((to, from) => {
-  // canUserAccess() returns `true` or `false`
-  NProgress.done();
-  return true;
+  const bool = authAccess(to);
+  if (bool) {
+    NProgress.done();
+    return true;
+  } else {
+    router.replace('/error/403');
+    NProgress.done();
+    return false;
+  }
 });
