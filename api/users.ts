@@ -17,7 +17,7 @@ class User {
   constructor() {
     this.name = Random.name();
     this.sex = sexArr[Random.integer(0, 2)];
-    this.hobbies = hobbies.slice(0, Random.integer(0, 2));
+    this.hobbies = hobbies.slice(0, Random.integer(0, 3));
     this.email = Random.email();
     this.roles = roleArr.slice(Random.integer(0, 1), 2);
   }

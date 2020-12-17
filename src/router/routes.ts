@@ -48,8 +48,19 @@ const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
+  {
+    path: '/error',
+    component: Layout,
+    children: [
+      {
+        path: '/:code(\\d+)',
+        name: 'Error',
+        component: () => import('@/views/error/index.vue'),
+      },
+    ],
+  },
   // TODO
-  { path: '/:pathMatch(.*)*', name: 'not-found', component: Layout },
+  { path: '/:pathMatch(.*)*', name: 'not-found', redirect: '/error/404' },
 ];
 
 export default routes;

@@ -8,7 +8,7 @@
     <Logo />
     <el-scrollbar wrap-class="menu-scrollbar">
       <el-menu
-        default-active="/"
+        :default-active="active"
         :collapse="isCollapse"
         :background-color="backgroundColor"
         :text-color="textColor"
@@ -34,6 +34,7 @@ import { useStore } from 'vuex';
 import Logo from './Logo.vue';
 import Menu from './Menu.vue';
 import { RootState } from '@/store';
+import { useRoute } from 'vue-router';
 
 export default defineComponent({
   name: 'Sider',
@@ -43,12 +44,14 @@ export default defineComponent({
   },
   setup() {
     const store = useStore<RootState>();
+    const route = useRoute();
     return {
       isCollapse: computed(() => store.state.app.isCollapse),
       menus: computed(() => store.state.user.menus),
       backgroundColor: '#001529',
       textColor: '#fff',
       activeTextColor: '#409EFF',
+      active: route.path,
     };
   },
 });

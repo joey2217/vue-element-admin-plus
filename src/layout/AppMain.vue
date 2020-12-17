@@ -1,7 +1,7 @@
 <template>
   <section id="content">
     <router-view v-slot="{ Component }">
-      <transition name="el-fade-in-linear">
+      <transition name="el-fade-in">
         <keep-alive>
           <component :is="Component" />
         </keep-alive>
