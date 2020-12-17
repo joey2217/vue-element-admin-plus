@@ -23,6 +23,8 @@ class User {
   }
 }
 
+export const userList = (num: number) => new Array(num).fill(0).map(() => new User());
+
 export default (request: NowRequest, response: NowResponse) => {
   const page = Number(request.query.page) || 1;
   const size = Number(request.query.size) || 10;
@@ -34,12 +36,11 @@ export default (request: NowRequest, response: NowResponse) => {
   } else if (num > max) {
     num = 0;
   }
-  const userList = new Array(num).map(() => new User());
   const result = {
     total,
     page,
     size,
-    list: userList,
+    list: userList(num),
   };
   response.status(200).json(result);
 };
