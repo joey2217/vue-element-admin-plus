@@ -1078,9 +1078,9 @@
     fastq "^1.6.0"
 
 "@popperjs/core@^2.4.4":
-  version "2.5.4"
-  resolved "https://registry.npm.taobao.org/@popperjs/core/download/@popperjs/core-2.5.4.tgz#de25b5da9f727985a3757fd59b5d028aba75841a"
-  integrity sha1-3iW12p9yeYWjdX/Vm10Cirp1hBo=
+  version "2.6.0"
+  resolved "https://registry.npm.taobao.org/@popperjs/core/download/@popperjs/core-2.6.0.tgz#f022195afdfc942e088ee2101285a1d31c7d727f"
+  integrity sha1-8CIZWv38lC4IjuIQEoWh0xx9cn8=
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.1"
@@ -4238,10 +4238,10 @@ elegant-spinner@^1.0.1:
   resolved "https://registry.npm.taobao.org/elegant-spinner/download/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
   integrity sha1-2wQ1IcldfjA/2PNFvtwzSc+wcp4=
 
-element-plus@^1.0.1-beta.7:
-  version "1.0.1-beta.7"
-  resolved "https://registry.npm.taobao.org/element-plus/download/element-plus-1.0.1-beta.7.tgz#080d3754ead09a71cdf1dda371fc34b55e8fc8ef"
-  integrity sha1-CA03VOrQmnHN8d2jcfw0tV6PyO8=
+element-plus@^1.0.1-beta.10:
+  version "1.0.1-beta.10"
+  resolved "https://registry.npm.taobao.org/element-plus/download/element-plus-1.0.1-beta.10.tgz#3fdc914c4a888b899d701642e13d1904ccae01f0"
+  integrity sha1-P9yRTEqIi4mdcBZC4T0ZBMyuAfA=
   dependencies:
     "@popperjs/core" "^2.4.4"
     async-validator "^3.4.0"

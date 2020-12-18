@@ -22,6 +22,11 @@ const menus: Menu[] = [
     icon: 'user',
   },
   {
+    fullPath: '/form',
+    title: 'Form',
+    icon: 'form',
+  },
+  {
     fullPath: '/menu',
     title: 'Menu',
     icon: 'menu',

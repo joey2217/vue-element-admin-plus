@@ -39,10 +39,21 @@ export default function usePage<T>(getList: (param: Page) => Promise<ListResult<
     getData();
   };
 
+  const onSizeChange = (size: number) => {
+    pageParams.size = size;
+    getData();
+  };
+  const onCurrentChange = (page: number) => {
+    pageParams.page = page;
+    getData();
+  };
+
   return {
     ...toRefs(state),
     ...toRefs(pageParams),
     getData,
     onSearch,
+    onSizeChange,
+    onCurrentChange,
   };
 }

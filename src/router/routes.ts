@@ -35,6 +35,20 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
+    path: '/form',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        name: 'Form',
+        component: () => import('@/views/form/index.vue'),
+        meta: {
+          auth: true,
+        },
+      },
+    ],
+  },
+  {
     path: '/menu',
     component: Layout,
     children: [
@@ -53,9 +67,15 @@ const routes: Array<RouteRecordRaw> = [
     component: Layout,
     children: [
       {
-        path: '/:code(\\d+)',
-        name: 'Error',
-        component: () => import('@/views/error/index.vue'),
+        path: '404',
+        name: 'NotFound',
+        component: () => import('@/views/error/404.vue'),
+        alias: '/error',
+      },
+      {
+        path: '403',
+        name: 'Forbidden',
+        component: () => import('@/views/error/403.vue'),
       },
     ],
   },

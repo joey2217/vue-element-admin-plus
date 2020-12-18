@@ -3,6 +3,7 @@ const path = require('path');
 
 module.exports = {
   publicPath: '/',
+  productionSourceMap: false,
   devServer: {
     proxy: {
       '/api': {
@@ -13,6 +14,14 @@ module.exports = {
     },
   },
   chainWebpack(config) {
+    config.resolve.alias
+      .set('@', path.resolve(__dirname, 'src'));
+    config
+      .plugin('html')
+      .tap(args => {
+        args[0].title = 'VueElementAdmin+';
+        return args;
+      });
     // it can improve the speed of the first screen, it is recommended to turn on preload
     config.plugin('preload').tap(() => [
       {
