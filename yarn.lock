@@ -2351,7 +2351,7 @@ async-limiter@~1.0.0:
 
 async-validator@^3.4.0:
   version "3.5.1"
-  resolved "https://registry.npm.taobao.org/async-validator/download/async-validator-3.5.1.tgz#cd62b9688b2465f48420e27adb47760ab1b5559f"
+  resolved "https://registry.npm.taobao.org/async-validator/download/async-validator-3.5.1.tgz?cache=0&sync_timestamp=1605749896979&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fasync-validator%2Fdownload%2Fasync-validator-3.5.1.tgz#cd62b9688b2465f48420e27adb47760ab1b5559f"
   integrity sha1-zWK5aIskZfSEIOJ620d2CrG1VZ8=
 
 async@^2.6.2:
@@ -3839,9 +3839,9 @@ date-fns@^1.27.2:
   integrity sha1-LnG/CxGRU9u0zE6I2epaz7UNwFw=
 
 dayjs@1.x:
-  version "1.9.7"
-  resolved "https://registry.npm.taobao.org/dayjs/download/dayjs-1.9.7.tgz?cache=0&sync_timestamp=1607178593731&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdayjs%2Fdownload%2Fdayjs-1.9.7.tgz#4b260bb17dceed2d5f29038dfee03c65a6786fc0"
-  integrity sha1-SyYLsX3O7S1fKQON/uA8ZaZ4b8A=
+  version "1.10.4"
+  resolved "https://registry.npm.taobao.org/dayjs/download/dayjs-1.10.4.tgz?cache=0&sync_timestamp=1611309982734&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdayjs%2Fdownload%2Fdayjs-1.10.4.tgz#8e544a9b8683f61783f570980a8a80eaf54ab1e2"
+  integrity sha1-jlRKm4aD9heD9XCYCoqA6vVKseI=
 
 deasync@^0.1.15:
   version "0.1.21"
@@ -4238,10 +4238,10 @@ elegant-spinner@^1.0.1:
   resolved "https://registry.npm.taobao.org/elegant-spinner/download/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
   integrity sha1-2wQ1IcldfjA/2PNFvtwzSc+wcp4=
 
-element-plus@^1.0.1-beta.10:
-  version "1.0.1-beta.10"
-  resolved "https://registry.npm.taobao.org/element-plus/download/element-plus-1.0.1-beta.10.tgz#3fdc914c4a888b899d701642e13d1904ccae01f0"
-  integrity sha1-P9yRTEqIi4mdcBZC4T0ZBMyuAfA=
+element-plus@^1.0.2-beta.31:
+  version "1.0.2-beta.31"
+  resolved "https://registry.npm.taobao.org/element-plus/download/element-plus-1.0.2-beta.31.tgz?cache=0&sync_timestamp=1612094743715&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Felement-plus%2Fdownload%2Felement-plus-1.0.2-beta.31.tgz#61a96111d9e9dc9d1ea511e213946db681471321"
+  integrity sha1-YalhEdnp3J0epRHiE5RttoFHEyE=
   dependencies:
     "@popperjs/core" "^2.4.4"
     async-validator "^3.4.0"
