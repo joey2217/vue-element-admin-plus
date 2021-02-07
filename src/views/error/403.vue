@@ -1,9 +1,7 @@
 <template>
-  <div class="container text-center error-page">
-    <div className="error-img">
-      <SvgComponent iconName="403" />
-    </div>
-    <h1>Forbidden!</h1>
+  <div class="container mx-auto text-center mt-40">
+    <h2 class="p-6 text-7xl font-bold">403</h2>
+    <h3 class="p-4 font-medium">Forbidden!</h3>
     <router-link to="/">
       <el-button type="primary">Home</el-button>
     </router-link>
@@ -11,27 +9,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import SvgComponent from '@/components/SvgComponent/index.vue';
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'Error',
-  components: {
-    SvgComponent,
-  },
+  components: {},
   setup() {
-    return {};
+    return {}
   },
-});
+})
 </script>
-
-<style lang="scss" scoped>
-.error-page {
-  padding-top: 10vh;
-  .error-img {
-    max-width: 500px;
-    height: 200px;
-    margin: auto;
-  }
-}
-</style>

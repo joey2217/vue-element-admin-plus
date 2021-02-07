@@ -1,24 +1,18 @@
-import { RouteRecordRaw } from 'vue-router';
-import Layout from '@/layout/index.vue';
-import Login from '@/views/login/index.vue';
-import Home from '@/views/home/index.vue';
+import { RouteRecordRaw } from 'vue-router'
+import Layout from '../layout/index.vue'
 
-const routes: Array<RouteRecordRaw> = [
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
+    name: 'Layout',
     component: Layout,
     children: [
       {
         path: '',
         name: 'Home',
-        component: Home,
+        component: () => import('@/views/home/index.vue'),
       },
     ],
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login,
   },
   {
     path: '/user',
@@ -63,24 +57,25 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
-    path: '/error',
-    component: Layout,
-    children: [
-      {
-        path: '404',
-        name: 'NotFound',
-        component: () => import('@/views/error/404.vue'),
-        alias: '/error',
-      },
-      {
-        path: '403',
-        name: 'Forbidden',
-        component: () => import('@/views/error/403.vue'),
-      },
-    ],
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/login/index.vue'),
   },
-  // TODO
-  { path: '/:pathMatch(.*)*', name: 'not-found', redirect: '/error/404' },
-];
+  {
+    path: '/error/404',
+    name: 'NotFound',
+    component: () => import('@/views/error/404.vue'),
+  },
+  {
+    path: '/error/403',
+    name: 'Forbidden',
+    component: () => import('@/views/error/403.vue'),
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'not-found',
+    redirect: '/error/404',
+  },
+]
 
-export default routes;
+export default routes

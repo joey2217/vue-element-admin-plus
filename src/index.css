@@ -1,0 +1,15 @@
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.page {
+  /* @apply flex justify-end	mt-4; */
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+button:focus {
+  outline: none;
+}

@@ -1,9 +1,9 @@
 <template>
   <aside
-    id="aside"
     :style="{
       width: isCollapse ? '64px' : '200px',
     }"
+    class="h-screen bg-gray-900 transition-all duration-500"
   >
     <Logo />
     <el-scrollbar wrap-class="menu-scrollbar">
@@ -15,9 +15,10 @@
         :active-text-color="activeTextColor"
         mode="vertical"
         router
+        class="border-none"
       >
         <el-menu-item index="/">
-          <SvgIcon iconClass="home" className="menu-icon" />
+          <i class="el-icon-s-home"></i>
           <template #title>
             <span>Home</span>
           </template>
@@ -29,12 +30,12 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
-import { useStore } from 'vuex';
-import Logo from './Logo.vue';
-import Menu from './Menu.vue';
-import { RootState } from '@/store';
-import { useRoute } from 'vue-router';
+import { computed, defineComponent } from 'vue'
+import { useStore } from 'vuex'
+import Logo from './Logo.vue'
+import Menu from './Menu.vue'
+import { RootState } from '../../store'
+import { useRoute } from 'vue-router'
 
 export default defineComponent({
   name: 'Sider',
@@ -43,19 +44,24 @@ export default defineComponent({
     Menu,
   },
   setup() {
-    const store = useStore<RootState>();
-    const route = useRoute();
+    const store = useStore<RootState>()
+    const route = useRoute()
     return {
       isCollapse: computed(() => store.state.app.isCollapse),
       menus: computed(() => store.state.user.menus),
-      backgroundColor: '#001529',
+      backgroundColor: '#111827',
       textColor: '#fff',
       activeTextColor: '#409EFF',
       active: route.path,
-    };
+    }
   },
-});
+})
 </script>
 
-<style lang="scss" scoped>
+
+<style scoped>
+.menu-scrollbar {
+  height: calc(100vh - 64px);
+  overflow-x: hidden !important;
+}
 </style>

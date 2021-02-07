@@ -19,12 +19,12 @@ const menus: Menu[] = [
   {
     fullPath: '/user',
     title: 'User',
-    icon: 'user',
+    icon: 'el-icon-user',
   },
   {
     fullPath: '/form',
     title: 'Form',
-    icon: 'form',
+    icon: 'el-icon-document',
   },
   {
     fullPath: '/menu',

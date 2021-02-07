@@ -1,15 +1,18 @@
-import { createRouter, createWebHistory, RouteLocationNormalized } from 'vue-router';
-import routes from './routes';
-import store from '@/store';
+import { createRouter, createWebHistory, RouteLocationNormalized } from 'vue-router'
+import routes from './routes'
+import store from '../store'
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  // https://vitejs.dev/config/#base
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
-});
+})
 
-export default router;
+export default router
+
+const ALLOW_LIST = ['/login']
 
 const authAccess = (to: RouteLocationNormalized): boolean => {
   if (to.meta.auth) {
@@ -22,34 +25,31 @@ const authAccess = (to: RouteLocationNormalized): boolean => {
   }
 };
 
-const AllowList: string[] = ['/login'];
-
 router.beforeEach(async (to, from) => {
   NProgress.start();
-  if (AllowList.includes(to.path)) {
-    return true;
+  if (ALLOW_LIST.includes(to.path)) {
+    return true
   } else {
-    const token = store.getters.token;
+    const token = store.getters.token
     if (token) {
-      const username = store.getters.username;
-      if (username) {
-        return true;
+      const roles = store.getters.roles
+      if (roles && roles.length > 0) {
+        return true
       } else {
         try {
-          await store.dispatch('getUserInfo');
-          return true;
+          await store.dispatch('getUserInfo')
+          return true
         } catch (error) {
-          console.error(error);
-          router.replace('/login');
-          return false;
+          // router.replace('/login')
+          return false
         }
       }
     } else {
-      router.replace('/login');
-      return false;
+      router.replace('/login')
+      return false
     }
   }
-});
+})
 
 router.beforeEach((to, from) => {
   const bool = authAccess(to);

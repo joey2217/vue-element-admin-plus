@@ -1,15 +1,10 @@
 <template>
-  <div class="login-container">
-    <el-card class="login-card" shadow="hover">
+  <div class="w-full h-screen bg-gradient-to-br from-indigo-500 via-blue-500 to-green-500">
+    <el-card class="w-full max-w-xl mx-auto px-4 pt-40">
       <template #header>
         <span>Login</span>
       </template>
-      <el-form
-        :model="form"
-        ref="loginForm"
-        hide-required-asterisk
-        id="login-form"
-      >
+      <el-form :model="form" ref="loginForm" hide-required-asterisk>
         <el-form-item
           props="username"
           :rules="[
@@ -27,7 +22,7 @@
         >
           <el-input v-model.trim="form.username" placeholder="Username">
             <template #prefix>
-              <svg-icon iconClass="user" className="input__icon" />
+              <i class="el-icon-user"></i>
             </template>
           </el-input>
         </el-form-item>
@@ -53,18 +48,19 @@
             placeholder="Password"
           >
             <template #prefix>
-              <svg-icon iconClass="user" className="input__icon" />
+              <i class="el-icon-lock"></i>
             </template>
           </el-input>
         </el-form-item>
         <el-form-item>
           <el-button
+            class="w-full"
             :loading="loading"
-            class="login-btn"
             type="primary"
             @click="onSubmit"
-            >Login</el-button
           >
+            Login
+          </el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -72,62 +68,42 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, toRaw } from 'vue';
-import { useStore } from 'vuex';
-import { ElMessage } from 'element-plus';
-import { useRouter } from 'vue-router';
+import { ElMessage } from 'element-plus'
+import { defineComponent, reactive, ref, toRaw } from 'vue'
+import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 
 export default defineComponent({
   name: 'Login',
   setup() {
-    const store = useStore();
-    const router = useRouter();
+    const store = useStore()
+    const router = useRouter()
     const form = reactive({
       username: 'admin',
       password: '123456',
-    });
-    const loading = ref(false);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const loginForm = ref<any>(null);
+    })
+    const loading = ref(false)
+    const loginForm = ref<any>(null)
     const onSubmit = async () => {
       try {
-        loading.value = true;
-        await loginForm.value?.validate();
-        const data = toRaw(loginForm.value?.model);
-        await store.dispatch('login', data);
-        ElMessage.success('成功!');
-        router.push('/');
-        loading.value = false;
+        loading.value = true
+        await loginForm.value?.validate()
+        const data = toRaw(loginForm.value?.model)
+        await store.dispatch('login', data)
+        ElMessage.success('成功!')
+        router.push('/')
+        // loading.value = false
       } catch (error) {
-        console.error(error);
-        loading.value = false;
+        console.error(error)
+        loading.value = false
       }
-    };
+    }
     return {
       form,
       loading,
       loginForm,
       onSubmit,
-    };
-  },
-});
-</script>
-
-<style lang="scss" scoped>
-.login-container {
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(102.7deg,#fddaff 8.2%,#dfadfc 19.6%,#adcdfc 36.8%,#adfcf4 73.2%,#caf8d0 90.9%);
-  .login-card {
-    width: 100%;
-    max-width: 500px;
-    margin-bottom: 15vh;
-    .login-btn {
-      width: 100%;
     }
-  }
-}
-</style>
+  },
+})
+</script>

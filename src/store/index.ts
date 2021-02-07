@@ -1,20 +1,17 @@
-import { createStore } from 'vuex';
-import app, { AppState } from './modules/app';
-import user, { State as UserState } from './modules/user';
+import { createStore } from 'vuex'
+import user, { State as UserState } from './modules/user'
+import app, { AppState } from './modules/app'
 
-export type RootState = {
-  app: AppState;
-  user: UserState;
-};
+export interface RootState {
+  user: UserState
+  app: AppState
+}
 
-const store = createStore<RootState>({
+const store = createStore({
   modules: {
-    app,
     user,
+    app,
   },
-  strict: process.env.NODE_ENV !== 'production',
-});
+})
 
-export default store;
-
-// https://next.vuex.vuejs.org/guide/typescript-support.html
+export default store

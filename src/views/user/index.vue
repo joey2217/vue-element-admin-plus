@@ -2,15 +2,15 @@
   <div class="container">
     <div class="query">
       <el-form :inline="true" ref="queryForm" :model="query" class="query-form">
-        <el-form-item prop="user">
-          <el-input v-model="query.user" placeholder="Name"></el-input>
+        <el-form-item prop="username">
+          <el-input v-model="query.username" placeholder="Username"></el-input>
         </el-form-item>
         <el-form-item prop="email">
           <el-input v-model="query.email" placeholder="Email"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="onSearch">Search</el-button>
-          <!-- <el-button @click="reset">重置</el-button> -->
+          <el-button @click="reset">重置</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -56,29 +56,47 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from 'vue';
-import { getUserPage } from '@/api/user';
-import usePage, { Page } from '@/hooks/usePage';
-import { ElForm } from 'element-plus';
+import { defineComponent, reactive, ref, toRaw } from 'vue'
+import { getUserPage } from '@/api/user'
+import usePage, { Page } from '@/hooks/usePage'
+import { ElForm } from 'element-plus'
 
 export default defineComponent({
   name: 'User',
   setup() {
-    const queryForm = ref<typeof ElForm>();
+    const queryForm = ref<typeof ElForm>()
     const query = reactive({
-      user: '',
-      query: '',
-    });
+      username: undefined,
+      email: undefined,
+    })
+    const reset = () => {
+      queryForm.value?.resetFields()
+      onSearch()
+    }
     const getPage = async (page: Page) => {
+      const params = {
+        ...page,
+        ...toRaw(query),
+      }
       const {
         data: { total, list },
-      } = await getUserPage(page);
+      } = await getUserPage(params)
       return {
         total,
         list,
-      };
-    };
-    const { loading, total, list, page, size, onSearch, onSizeChange, onCurrentChange } = usePage(getPage);
+      }
+    }
+    const {
+      loading,
+      total,
+      list,
+      page,
+      size,
+      onSearch,
+      onSizeChange,
+      onCurrentChange,
+    } = usePage(getPage)
+
     return {
       loading,
       total,
@@ -90,12 +108,9 @@ export default defineComponent({
       onCurrentChange,
       tagTypes: ['success', 'info'],
       query,
-      // TODO
-      reset: () => queryForm.value?.resetFields(),
-    };
+      queryForm,
+      reset,
+    }
   },
-});
+})
 </script>
-
-<style lang="scss" scoped>
-</style>

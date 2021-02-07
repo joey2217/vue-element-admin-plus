@@ -1,87 +1,81 @@
-import { toRaw } from 'vue';
-import { Module } from 'vuex';
-import { RootState } from '../index';
-import { login, LoginData, MenuItem, getUserInfo } from '@/api/login';
-import { flatTree } from '@/utils';
+import { Module } from 'vuex'
+import { RootState } from '../'
+import {
+  login,
+  getUserInfo,
+  LoginData,
+  MenuItem,
+  UserInfo,
+} from '../../api/login'
+import { flatTree } from '@/utils'
+
+const LOCAL_TOKEN = '_tk'
+
 export interface State {
-  token: string;
-  username: string;
-  nickname: string;
-  roles: string[];
-  menus: MenuItem[];
-  flatMenus: MenuItem[];
-  avatar: string;
+  token: string
+  username: string
+  nickname: string
+  roles: string[]
+  menus: MenuItem[]
+  flatMenus: MenuItem[]
+  avatar: string
 }
 
-const TOKEN_KEY = '__token__';
-
 const initState: () => State = () => ({
-  token: localStorage[TOKEN_KEY],
+  token: localStorage[LOCAL_TOKEN],
   username: '',
   nickname: '',
   roles: [],
   menus: [],
   flatMenus: [],
   avatar: '',
-});
+})
 
 const user: Module<State, RootState> = {
   state: initState(),
   mutations: {
     SET_TOKEN: (state, payload: string) => {
-      state.token = payload;
-      localStorage[TOKEN_KEY] = payload;
+      localStorage[LOCAL_TOKEN] = payload
+      state.token = payload
     },
-    SET_USERNAME: (state, payload: string) => {
-      state.username = payload;
-    },
-    SET_NICKNAME: (state, payload: string) => {
-      state.nickname = payload;
-    },
-    SET_ROLES: (state, payload: string[]) => {
-      state.roles = payload;
-    },
-    SET_MENUS: (state, payload: MenuItem[]) => {
-      state.menus = payload;
-      state.flatMenus = flatTree(payload);
-    },
-    SET_AVATAR: (state, payload: string) => {
-      state.avatar = payload;
+    SET_USER_INFO: (state, payload: UserInfo) => {
+      const { username, roles, menus, avatar, nickname } = payload
+      state.username = username
+      state.nickname = nickname
+      state.avatar = avatar || ''
+      state.roles = roles
+      state.menus = menus
+      state.flatMenus = flatTree(menus)
     },
     RESET: (state) => {
-      localStorage[TOKEN_KEY] = '';
-      state.token = '';
-      state.username = '';
-      state.nickname = '';
-      state.roles = [];
-      state.menus = [];
-      state.flatMenus = [];
-      state.avatar = '';
+      localStorage.removeItem(LOCAL_TOKEN)
+      state.token = ''
+      state.username = ''
+      state.nickname = ''
+      state.roles = []
+      state.menus = []
+      state.flatMenus = []
+      state.avatar = ''
     },
   },
   actions: {
     async login({ commit }, loginData: LoginData) {
-      const { data } = await login(loginData);
-      commit('SET_TOKEN', data);
-    },
-    async getUserInfo({ commit }) {
-      const { data: { username, nickname, roles, menus, avatar } } = await getUserInfo();
-      commit('SET_USERNAME', username);
-      commit('SET_NICKNAME', nickname);
-      commit('SET_ROLES', roles);
-      commit('SET_MENUS', menus);
-      commit('SET_AVATAR', avatar);
+      const { data } = await login(loginData)
+      commit('SET_TOKEN', data)
     },
     logout({ commit }) {
-      // TODO backend logout
-      commit('RESET');
+      commit('RESET')
+    },
+    async getUserInfo({ commit }) {
+      const { data } = await getUserInfo()
+      commit('SET_USER_INFO', data)
     },
   },
   getters: {
-    token: state => state.token,
-    username: state => state.username,
-    flatMenus: state => toRaw(state.flatMenus),
+    token: (state) => state.token,
+    roles: (state) => state.roles,
+    flatMenus: (state) => state.flatMenus,
   },
-};
+}
 
-export default user;
+export default user

@@ -1,8 +1,7 @@
 <script lang="ts">
-import { defineComponent, h, PropType, Fragment } from 'vue';
-import { ElMenuItem, ElSubmenu } from 'element-plus';
-import { MenuItem } from '@/api/login';
-import SvgIcon from '@/plugins/icons/SvgIcon.vue';
+import { defineComponent, h, PropType, Fragment } from 'vue'
+import { ElMenuItem, ElSubmenu } from 'element-plus'
+import { MenuItem } from '../../api/login'
 
 export default defineComponent({
   name: 'Menu',
@@ -25,11 +24,11 @@ export default defineComponent({
               default: () => menu.children && generateMenus(menu.children),
               title: () =>
                 h(Fragment, [
-                  menu.icon && h(SvgIcon, { iconClass: menu.icon, className: 'menu-icon' }),
-                  menu.title,
+                  menu.icon && h('i', { class: menu.icon }),
+                  h('span', [menu.title]),
                 ]),
-            },
-          );
+            }
+          )
         } else {
           return h(
             ElMenuItem,
@@ -37,14 +36,13 @@ export default defineComponent({
               index: menu.fullPath,
             },
             {
-              default: () => menu.icon && h(SvgIcon, { iconClass: menu.icon, className: 'menu-icon' }),
-              // default: () => menu.icon && h('i', { iconClass: menu.icon, class: 'el-icon-location' }),
-              title: () => h(Fragment, [menu.title]),
-            },
-          );
+              default: () => menu.icon && h('i', { class: menu.icon }),
+              title: () => h('span', [menu.title]),
+            }
+          )
         }
-      });
-    return () => generateMenus(props.menus);
+      })
+    return () => props.menus && generateMenus(props.menus)
   },
-});
+})
 </script>
