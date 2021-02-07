@@ -29,7 +29,7 @@ const menus: Menu[] = [
   {
     fullPath: '/menu',
     title: 'Menu',
-    icon: 'menu',
+    icon: 'el-icon-menu',
     redirect: '/menu/menu1/menu1-1',
     children: [
       {
