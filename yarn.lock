@@ -820,10 +820,10 @@ emojis-list@^3.0.0:
   resolved "https://registry.npm.taobao.org/emojis-list/download/emojis-list-3.0.0.tgz#5570662046ad29e2e916e71aae260abdff4f6a78"
   integrity sha1-VXBmIEatKeLpFucariYKvf9Pang=
 
-esbuild@^0.8.34:
-  version "0.8.42"
-  resolved "https://registry.npm.taobao.org/esbuild/download/esbuild-0.8.42.tgz?cache=0&sync_timestamp=1612511182353&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fesbuild%2Fdownload%2Fesbuild-0.8.42.tgz#26101cf17fe4c4602c7c767e3177cf0c538073ac"
-  integrity sha1-JhAc8X/kxGAsfHZ+MXfPDFOAc6w=
+esbuild@^0.8.47:
+  version "0.8.52"
+  resolved "https://registry.npm.taobao.org/esbuild/download/esbuild-0.8.52.tgz?cache=0&sync_timestamp=1614229839469&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fesbuild%2Fdownload%2Fesbuild-0.8.52.tgz#6dabf11c517af449a96d66da20dfc204ee7b5294"
+  integrity sha1-bavxHFF69EmpbWbaIN/CBO57UpQ=
 
 escalade@^3.1.1:
   version "3.1.1"
@@ -890,11 +890,6 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/fs.realpath/download/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
   integrity sha1-FQStJSMVjKpA20onh8sBQRmU6k8=
-
-fsevents@~2.1.2:
-  version "2.1.3"
-  resolved "https://registry.npm.taobao.org/fsevents/download/fsevents-2.1.3.tgz?cache=0&sync_timestamp=1612536512306&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ffsevents%2Fdownload%2Ffsevents-2.1.3.tgz#fb738703ae8d2f9fe900c33836ddebee8b97f23e"
-  integrity sha1-+3OHA66NL5/pAMM4Nt3r7ouX8j4=
 
 fsevents@~2.3.1:
   version "2.3.2"
@@ -1466,10 +1461,10 @@ reusify@^1.0.4:
   resolved "https://registry.npm.taobao.org/reusify/download/reusify-1.0.4.tgz#90da382b1e126efc02146e90845a88db12925d76"
   integrity sha1-kNo4Kx4SbvwCFG6QhFqI2xKSXXY=
 
-rollup@^2.35.1:
-  version "2.38.5"
-  resolved "https://registry.npm.taobao.org/rollup/download/rollup-2.38.5.tgz?cache=0&sync_timestamp=1612505685559&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Frollup%2Fdownload%2Frollup-2.38.5.tgz#be41ad4fe0c103a8794377afceb5f22b8f603d6a"
-  integrity sha1-vkGtT+DBA6h5Q3evzrXyK49gPWo=
+rollup@^2.38.5:
+  version "2.39.1"
+  resolved "https://registry.npm.taobao.org/rollup/download/rollup-2.39.1.tgz?cache=0&sync_timestamp=1614059439391&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Frollup%2Fdownload%2Frollup-2.39.1.tgz#7afd4cefd8a332c5102a8063d301fde1f31a9173"
+  integrity sha1-ev1M79ijMsUQKoBj0wH94fMakXM=
   optionalDependencies:
     fsevents "~2.3.1"
 
@@ -1653,17 +1648,17 @@ uuid@^8.3.2:
   resolved "https://registry.npm.taobao.org/uuid/download/uuid-8.3.2.tgz?cache=0&sync_timestamp=1607458532020&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fuuid%2Fdownload%2Fuuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha1-gNW1ztJxu5r2xEXyGhoExgbO++I=
 
-vite@^2.0.0-beta.50:
-  version "2.0.0-beta.65"
-  resolved "https://registry.npm.taobao.org/vite/download/vite-2.0.0-beta.65.tgz?cache=0&sync_timestamp=1612545893145&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvite%2Fdownload%2Fvite-2.0.0-beta.65.tgz#e4e4576c01b9906d5fb3568e4068c80354107a70"
-  integrity sha1-5ORXbAG5kG1fs1aOQGjIA1QQenA=
+vite@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.npm.taobao.org/vite/download/vite-2.0.3.tgz#ea0329295d4da9341e670036e5e7f0bfa30ae2cf"
+  integrity sha1-6gMpKV1NqTQeZwA25efwv6MK4s8=
   dependencies:
-    esbuild "^0.8.34"
+    esbuild "^0.8.47"
     postcss "^8.2.1"
     resolve "^1.19.0"
-    rollup "^2.35.1"
+    rollup "^2.38.5"
   optionalDependencies:
-    fsevents "~2.1.2"
+    fsevents "~2.3.1"
 
 vscode-languageserver-textdocument@^1.0.1:
   version "1.0.1"
