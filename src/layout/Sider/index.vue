@@ -1,9 +1,8 @@
 <template>
-  <aside
-    :style="{
-      width: isCollapse ? '64px' : '200px',
-    }"
-    class="h-screen bg-gray-900 transition-all duration-500"
+  <el-aside
+    :width="isCollapse ? '64px' : '200px'"
+    class="h-screen overflow-hidden bg-gray-900 transition-all duration-500"
+    style="overflow: hidden"
   >
     <Logo />
     <el-scrollbar wrap-class="menu-scrollbar">
@@ -26,7 +25,7 @@
         <Menu :menus="menus" />
       </el-menu>
     </el-scrollbar>
-  </aside>
+  </el-aside>
 </template>
 
 <script lang="ts">

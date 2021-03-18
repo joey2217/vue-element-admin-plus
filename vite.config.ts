@@ -12,11 +12,7 @@ export default defineConfig({
   server: {
     port: 4000,
     proxy: {
-      '/api': {
-        target: 'https://vue-element-admin-plus.joey2019.vercel.app/',
-        changeOrigin: true,
-        // rewrite: (path) => path.replace(/^\/api/, ''),
-      },
+      '/api': 'https://vue-element-admin-plus.joey2019.vercel.app',
     },
   },
 })

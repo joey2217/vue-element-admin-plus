@@ -1,5 +1,5 @@
 <template>
-  <header class="flex items-center justify-between h-16 px-4">
+  <el-header class="flex items-center justify-between h-16 px-4">
     <div
       :class="{ 'transform rotate-180': isCollapse }"
       class="cursor-pointer"
@@ -69,7 +69,7 @@
         </template>
       </el-dropdown>
     </div>
-  </header>
+  </el-header>
 </template>
 <script lang="ts">
 import { computed, defineComponent } from 'vue'

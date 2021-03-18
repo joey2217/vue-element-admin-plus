@@ -17,7 +17,6 @@
     <el-table
       v-loading="loading"
       :data="list"
-      style="width: calc(100vw - 300px)"
     >
       <el-table-column prop="name" label="Name" show-overflow-tooltip />
       <el-table-column prop="sex" label="Sex" show-overflow-tooltip />

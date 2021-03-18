@@ -4,7 +4,7 @@ import store from '../store'
 const request = axios.create({
   baseURL: '/api',
   // withCredentials: true,
-  timeout: 5000,
+  // timeout: 5000,
 })
 
 const HEADER_KEY = 'Token'

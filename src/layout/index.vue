@@ -1,11 +1,11 @@
 <template>
-  <div class="w-full h-screen overflow-hidden flex">
+  <el-container class="h-screen overflow-hidden">
     <Sider />
-    <main class="flex-1">
+    <el-container direction="vertical">
       <AppHeader />
       <AppMain />
-    </main>
-  </div>
+    </el-container>
+  </el-container>
 </template>
 
 <script lang="ts">
