@@ -1,28 +1,30 @@
 <template>
-  <div class="w-full h-screen bg-gradient-to-br from-indigo-500 via-blue-500 to-green-500">
-    <el-card class="w-full max-w-xl mx-auto px-4 pt-40">
+  <div
+    class="w-full h-screen pt-40 bg-gradient-to-br from-indigo-500 via-blue-500 to-green-500"
+  >
+    <el-card class="w-full max-w-xl mx-auto px-4">
       <template #header>
         <span>Login</span>
       </template>
-      <el-form :model="form" ref="loginForm" hide-required-asterisk>
+      <el-form ref="loginForm" :model="form" hide-required-asterisk>
         <el-form-item
           props="username"
           :rules="[
             {
               required: true,
               message: 'Please input username!',
-              trigger: 'blur',
+              trigger: 'blur'
             },
             {
               pattern: /^[a-zA-Z]\w{4,15}$/,
               message: 'Please input correct username!',
-              trigger: ['blur', 'change'],
-            },
+              trigger: ['blur', 'change']
+            }
           ]"
         >
           <el-input v-model.trim="form.username" placeholder="Username">
             <template #prefix>
-              <i class="el-icon-user"></i>
+              <i class="el-icon-user" />
             </template>
           </el-input>
         </el-form-item>
@@ -32,13 +34,13 @@
             {
               required: true,
               message: 'Please input password!',
-              trigger: 'blur',
+              trigger: 'blur'
             },
             {
               pattern: /^[a-zA-Z]\w{4,15}$/,
               message: 'Please input correct password!',
-              trigger: ['blur', 'change'],
-            },
+              trigger: ['blur', 'change']
+            }
           ]"
         >
           <el-input
@@ -48,7 +50,7 @@
             placeholder="Password"
           >
             <template #prefix>
-              <i class="el-icon-lock"></i>
+              <i class="el-icon-lock" />
             </template>
           </el-input>
         </el-form-item>

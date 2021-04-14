@@ -1,13 +1,18 @@
-import { createRouter, createWebHistory, RouteLocationNormalized } from 'vue-router'
+import {
+  createRouter,
+  createWebHistory,
+  RouteLocationNormalized
+} from 'vue-router'
 import routes from './routes'
 import store from '../store'
-import NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+import { MenuItem } from '../api/login'
 
 const router = createRouter({
   // https://vitejs.dev/config/#base
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes,
+  routes
 })
 
 export default router
@@ -16,17 +21,19 @@ const ALLOW_LIST = ['/login']
 
 const authAccess = (to: RouteLocationNormalized): boolean => {
   if (to.meta.auth) {
-    const flatMenus = store.getters.flatMenus;
-    const index = flatMenus && (flatMenus as any[]).findIndex(menu => menu.fullPath === to.path);
+    const flatMenus = store.getters.flatMenus
+    const index =
+      flatMenus &&
+      (flatMenus as MenuItem[]).findIndex((menu) => menu.fullPath === to.path)
     // TODO permission
-    return index !== -1;
+    return index !== -1
   } else {
-    return true;
+    return true
   }
-};
+}
 
-router.beforeEach(async (to, from) => {
-  NProgress.start();
+router.beforeEach(async (to, _form) => {
+  NProgress.start()
   if (ALLOW_LIST.includes(to.path)) {
     return true
   } else {
@@ -40,7 +47,7 @@ router.beforeEach(async (to, from) => {
           await store.dispatch('getUserInfo')
           return true
         } catch (error) {
-          // router.replace('/login')
+          router.replace('/login')
           return false
         }
       }
@@ -51,14 +58,14 @@ router.beforeEach(async (to, from) => {
   }
 })
 
-router.beforeEach((to, from) => {
-  const bool = authAccess(to);
+router.beforeEach((to, _form) => {
+  const bool = authAccess(to)
   if (bool) {
-    NProgress.done();
-    return true;
+    NProgress.done()
+    return true
   } else {
-    router.replace('/error/403');
-    NProgress.done();
-    return false;
+    router.replace('/error/403')
+    NProgress.done()
+    return false
   }
-});
+})

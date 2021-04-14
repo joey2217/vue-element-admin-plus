@@ -3,16 +3,19 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  resolve:{
+  resolve: {
     alias: {
-      '@': '/src/',
-    },
+      '@': '/src/'
+    }
   },
   plugins: [vue()],
   server: {
     port: 4000,
     proxy: {
-      '/api': 'https://vue-element-admin-plus.joey2019.vercel.app',
-    },
-  },
+      '/api': {
+        target: 'https://vue-element-admin-plus.joey2019.vercel.app/',
+        changeOrigin: true
+      }
+    }
+  }
 })

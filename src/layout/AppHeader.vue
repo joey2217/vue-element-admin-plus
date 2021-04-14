@@ -48,8 +48,10 @@
         <div
           class="h-16 flex items-center px-2 hover:bg-gray-50 focus:outline-none"
         >
-          <el-avatar :size="40" :src="avatar"> Avatar </el-avatar>
-          <span class="ml-2 uppercase">{{username}}</span>
+          <el-avatar :size="40" :src="avatar">
+            Avatar
+          </el-avatar>
+          <span class="ml-2 uppercase">{{ username }}</span>
         </div>
         <template #dropdown>
           <el-dropdown-menu>
@@ -63,7 +65,9 @@
               <el-dropdown-item divided>Github</el-dropdown-item>
             </a>
             <div @click="logout">
-              <el-dropdown-item divided>Logout</el-dropdown-item>
+              <el-dropdown-item divided>
+                Logout
+              </el-dropdown-item>
             </div>
           </el-dropdown-menu>
         </template>
@@ -92,8 +96,8 @@ export default defineComponent({
       username: computed(() => store.state.user.username),
       avatar: computed(() => store.state.user.avatar),
       toggleCollapse: () => store.commit(TOGGLE_COLLAPSE),
-      logout,
+      logout
     }
-  },
+  }
 })
 </script>
