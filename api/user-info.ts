@@ -1,4 +1,4 @@
-import { NowRequest, NowResponse } from '@vercel/node';
+import { VercelRequest, VercelResponse } from '@vercel/node'
 import { Random } from 'mockjs';
 interface Menu {
   fullPath: string;
@@ -54,14 +54,14 @@ const menus: Menu[] = [
     ],
   },
 ];
-export default (request: NowRequest, response: NowResponse) => {
-  const nickname = Random.last();
+export default (request: VercelRequest, response: VercelResponse):void => {
+  const nickname = Random.last()
   const userInfo: UserInfo = {
     nickname,
     username: Random.first(),
     roles: ['admin'],
     menus,
     avatar: Random.image('100x100', '#4A7BF7', nickname.slice(0, 1)),
-  };
-  response.status(200).json(userInfo);
-};
+  }
+  response.status(200).json(userInfo)
+}
