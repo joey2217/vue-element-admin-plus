@@ -10,7 +10,7 @@ export function login(data: LoginData): AxiosPromise<string> {
   return request({
     url: '/login',
     method: 'POST',
-    data,
+    data
   })
 }
 
@@ -33,6 +33,10 @@ export interface UserInfo {
 export function getUserInfo(): AxiosPromise<UserInfo> {
   return request({
     url: '/user-info',
-    method: 'GET',
+    method: 'GET'
   })
+}
+
+export function test(): string {
+  return 'test'
 }

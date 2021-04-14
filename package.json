@@ -5,8 +5,7 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
-    "lint": "eslint --fix",
-    "precommit": "lint-staged"
+    "lint": "eslint --fix"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -35,10 +34,14 @@
     "vite": "^2.1.5",
     "vue-tsc": "^0.0.15"
   },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
   "lint-staged": {
     "*.{js,jsx,vue,ts,tsx}": [
       "eslint --fix",
-      "prettier --write"
+      "prettier --write",
+      "git add"
     ]
   }
 }
