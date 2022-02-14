@@ -1,18 +1,18 @@
 import { VercelRequest, VercelResponse } from '@vercel/node'
-import { Random } from 'mockjs';
+import { Random } from 'mockjs'
 interface Menu {
-  fullPath: string;
-  title: string;
-  redirect?: string;
-  icon?: string;
-  children?: Menu[];
+  fullPath: string
+  title: string
+  redirect?: string
+  icon?: string
+  children?: Menu[]
 }
 interface UserInfo {
-  username: string;
-  nickname: string;
-  roles: string[];
-  menus: Menu[];
-  avatar?: string;
+  username: string
+  nickname: string
+  roles: string[]
+  menus: Menu[]
+  avatar?: string
 }
 
 const menus: Menu[] = [
@@ -53,15 +53,20 @@ const menus: Menu[] = [
       },
     ],
   },
-];
-export default (request: VercelRequest, response: VercelResponse):void => {
-  const nickname = Random.last()
-  const userInfo: UserInfo = {
-    nickname,
-    username: Random.first(),
-    roles: ['admin'],
-    menus,
-    avatar: Random.image('100x100', '#4A7BF7', nickname.slice(0, 1)),
+]
+export default (request: VercelRequest, response: VercelResponse): void => {
+  const token = request.cookies['access-token']
+  if (token) {
+    const nickname = Random.last()
+    const userInfo: UserInfo = {
+      nickname,
+      username: Random.first(),
+      roles: ['admin'],
+      menus,
+      avatar: Random.image('100x100', '#4A7BF7', nickname.slice(0, 1)),
+    }
+    response.status(200).json(userInfo)
+  } else {
+    response.status(401).send('Unauthorized')
   }
-  response.status(200).json(userInfo)
 }
