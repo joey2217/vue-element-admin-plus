@@ -1,29 +1,15 @@
 <template>
-  <div class="text-xl">
-    <div>
-      Username:
-      <span>{{ username }}</span>
-    </div>
-    <div>
-      Roles:
-      <span>{{ roles }}</span>
-    </div>
+  <div class="container mx-auto text-center">
+    <el-button>Default</el-button>
+    <el-button type="primary">Primary</el-button>
+    <el-button type="success">Success</el-button>
+    <el-button type="info">Info</el-button>
+    <el-button type="warning">Warning</el-button>
+    <el-button type="danger">Danger</el-button>
+    <el-button>中文</el-button>
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from 'vue'
-import { useStore } from 'vuex'
-import { RootState } from '../../store'
+<script lang="ts" setup></script>
 
-export default defineComponent({
-  name: 'Home',
-  setup() {
-    const store = useStore<RootState>()
-    return {
-      username: computed(() => store.state.user.username),
-      roles: computed(() => store.state.user.roles.join()),
-    }
-  },
-})
-</script>
+<style scoped></style>
