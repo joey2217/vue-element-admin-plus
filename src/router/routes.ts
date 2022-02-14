@@ -7,6 +7,9 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     name: 'home',
     component: Home,
+    meta: {
+      auth: true,
+    },
   },
   {
     path: '/login',
