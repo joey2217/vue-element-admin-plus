@@ -72,11 +72,12 @@ const onSubmit = async () => {
       loading.value = true
       const valid = await loginFormRef.value.validate()
       if (valid) {
-        // const res = await login(loginForm)
+        const res = await login(loginForm)
         router.push({
           path: '/',
           replace: true,
         })
+        console.log(res.data)
       } else {
         throw Error('not valid')
       }
