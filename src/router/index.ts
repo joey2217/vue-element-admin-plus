@@ -18,18 +18,19 @@ export default router
 router.beforeEach(async (to, from) => {
   try {
     NProgress.start()
-    const store = useUserStore()
-    if (to.meta.auth) {
-      if (store.username) {
-        return store.allowPath.includes(to.path)
-      } else {
-        await store.getUserInfo()
-        return store.allowPath.includes(to.path)
-      }
-    }
+    // TODO
+    // const store = useUserStore()
+    // if (to.meta.auth) {
+    //   if (store.username) {
+    //     return store.allowPath.includes(to.path)
+    //   } else {
+    //     await store.getUserInfo()
+    //     return store.allowPath.includes(to.path)
+    //   }
+    // }
   } catch (error) {
     console.error(error)
-    return `/login?ref=${from.fullPath}`
+    return `/login?ref=${from.path}`
   }
 })
 

@@ -4,7 +4,7 @@ const request = axios.create({
   baseURL: import.meta.env.DEV
     ? 'https://vue-element-admin-plus.vercel.app/api/'
     : '/api/',
-  // withCredentials:true,
+  withCredentials: true,
   // timeout: 1000,
 })
 

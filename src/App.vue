@@ -1,3 +1,5 @@
 <template>
-  <RouterView />
+  <div class="text-sm">
+    <RouterView />
+  </div>
 </template>
