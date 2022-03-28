@@ -7,7 +7,6 @@ import { useUserStore } from '@/stores/user'
 /**
  * @link https://router.vuejs.org/zh/
  */
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
@@ -19,15 +18,15 @@ router.beforeEach(async (to, from) => {
   try {
     NProgress.start()
     // TODO
-    // const store = useUserStore()
-    // if (to.meta.auth) {
-    //   if (store.username) {
-    //     return store.allowPath.includes(to.path)
-    //   } else {
-    //     await store.getUserInfo()
-    //     return store.allowPath.includes(to.path)
-    //   }
-    // }
+    const store = useUserStore()
+    if (to.meta.auth) {
+      if (store.username) {
+        return store.allowPath.includes(to.path)
+      } else {
+        await store.getUserInfo()
+        return store.allowPath.includes(to.path)
+      }
+    }
   } catch (error) {
     console.error(error)
     return `/login?ref=${from.path}`

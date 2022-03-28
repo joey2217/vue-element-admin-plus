@@ -4,22 +4,31 @@
     :class="[isCollapse ? 'w-16' : 'w-[200px]']"
   >
     <Logo />
-    <el-menu default-active="2" id="menu" :collapse="isCollapse">
-      <el-menu-item index="2">
-        <el-icon><icon-menu /></el-icon>
-        <template #title>Navigator Two</template>
+    <el-menu
+      :default-active="route.path"
+      id="menu"
+      :collapse="isCollapse"
+      router
+    >
+      <el-menu-item index="/">
+        <el-icon><HomeFilled /></el-icon>
+        <template #title>Home</template>
       </el-menu-item>
+      <Menus />
     </el-menu>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
-import { Menu as IconMenu } from '@element-plus/icons-vue'
 import { useAppStore } from '../store'
+import { HomeFilled } from '@element-plus/icons-vue'
 import Logo from './Logo.vue'
+import Menus from './Menus.vue'
+import { useRoute } from 'vue-router'
 
 const store = useAppStore()
+const route = useRoute()
 const { isCollapse } = storeToRefs(store)
 </script>
 

@@ -1,9 +1,7 @@
 import axios, { type AxiosError } from 'axios'
 
 const request = axios.create({
-  baseURL: import.meta.env.DEV
-    ? 'https://vue-element-admin-plus.vercel.app/api/'
-    : '/api/',
+  baseURL: '/api/',
   withCredentials: true,
   // timeout: 1000,
 })

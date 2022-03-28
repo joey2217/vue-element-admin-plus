@@ -13,8 +13,47 @@ const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '',
-        name: 'home',
         component: Home,
+      },
+    ],
+  },
+  {
+    path: '/user',
+    component: Layout,
+    meta: {
+      auth: true,
+    },
+    children: [
+      {
+        path: '',
+        name: 'User',
+        component: () => import('@/views/user/index.vue'),
+      },
+    ],
+  },
+  {
+    path: '/form',
+    component: Layout,
+    meta: {
+      auth: true,
+    },
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/form/index.vue'),
+      },
+    ],
+  },
+  {
+    path: '/menu',
+    component: Layout,
+    meta: {
+      auth: true,
+    },
+    children: [
+      {
+        path: '/:chapters*',
+        component: () => import('@/views/menu/index.vue'),
       },
     ],
   },

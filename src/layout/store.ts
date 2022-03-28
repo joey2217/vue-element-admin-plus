@@ -4,9 +4,11 @@ export interface AppState {
   isCollapse: boolean
 }
 
+const COLLAPSE = 'collapse'
+
 export const useAppStore = defineStore('app', {
   state: (): AppState => ({
-    isCollapse: false,
+    isCollapse: localStorage.getItem(COLLAPSE) === 'true' || false,
   }),
   actions: {
     toggleCollapse(collapse?: boolean) {
@@ -15,6 +17,7 @@ export const useAppStore = defineStore('app', {
       } else {
         this.isCollapse = !this.isCollapse
       }
+      localStorage.setItem(COLLAPSE, String(this.isCollapse))
     },
   },
 })

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import type { UserInfo } from '@/types'
-import { fetchUserInfo } from '@/api/login'
+import { fetchUserInfo, login } from '@/api/login'
 import { flatTree } from '@/utils'
 
 export const useUserStore = defineStore('user', {
@@ -20,6 +20,10 @@ export const useUserStore = defineStore('user', {
       this.roles = roles
       this.menus = menus
       this.avatar = avatar
+    },
+    async logout() {
+      this.$reset()
+      // request logout
     },
   },
   getters: {

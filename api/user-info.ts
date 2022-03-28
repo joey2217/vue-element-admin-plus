@@ -20,17 +20,17 @@ const menus: Menu[] = [
   {
     fullPath: '/user',
     title: 'User',
-    icon: 'el-icon-user',
+    icon: 'user',
   },
   {
     fullPath: '/form',
     title: 'Form',
-    icon: 'el-icon-document',
+    icon: 'form',
   },
   {
     fullPath: '/menu',
     title: 'Menu',
-    icon: 'el-icon-menu',
+    icon: 'menu',
     redirect: '/menu/menu1/menu1-1',
     children: [
       {
