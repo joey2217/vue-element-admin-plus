@@ -1,7 +1,7 @@
 <template>
-  <div
+  <el-aside
     class="h-screen overflow-hidden transition-all duration-300 ease-in border-r border-[#dcdfe6]"
-    :class="[isCollapse ? 'w-16' : 'w-[200px]']"
+    :width="isCollapse ? '65px' : '201px'"
   >
     <Logo />
     <el-menu
@@ -16,7 +16,7 @@
       </el-menu-item>
       <Menus />
     </el-menu>
-  </div>
+  </el-aside>
 </template>
 
 <script lang="ts" setup>

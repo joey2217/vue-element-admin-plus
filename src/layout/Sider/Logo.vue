@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/" class="flex items-center overflow-hidden h-16">
+  <router-link to="/" class="flex items-center overflow-hidden h-[60px]">
     <div class="w-16 shrink-0">
       <svg
         viewBox="0 0 1024 1024"

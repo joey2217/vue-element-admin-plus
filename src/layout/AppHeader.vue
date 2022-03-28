@@ -1,5 +1,5 @@
 <template>
-  <header class="flex items-center h-16 pr-4 shadow">
+  <div class="flex items-center h-full pr-4 shadow">
     <div
       class="cursor-pointer h-full flex items-center px-4 hover:text-[#409EFF]"
       @click="onClick"
@@ -33,7 +33,7 @@
         </template>
       </el-dropdown>
     </div>
-  </header>
+  </div>
 </template>
 
 <script lang="ts" setup>

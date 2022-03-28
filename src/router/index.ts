@@ -16,7 +16,6 @@ export default router
 
 router.beforeEach(async (to, from) => {
   try {
-    console.log(to, from)
     NProgress.start()
     const store = useUserStore()
     if (to.meta.auth) {

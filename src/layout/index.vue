@@ -1,11 +1,11 @@
 <template>
-  <section class="h-screen flex">
+  <el-container>
     <Sider />
-    <section class="flex-1">
-      <AppHeader />
-      <AppMain />
-    </section>
-  </section>
+    <el-container>
+      <el-header style="padding: 0"><AppHeader /></el-header>
+      <el-main> <AppMain /></el-main>
+    </el-container>
+  </el-container>
 </template>
 
 <script lang="ts" setup>
