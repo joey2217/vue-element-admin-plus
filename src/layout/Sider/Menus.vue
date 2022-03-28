@@ -1,6 +1,6 @@
 <script lang="tsx">
-import { storeToRefs } from 'pinia'
 import { h } from 'vue'
+import { storeToRefs } from 'pinia'
 import { ElMenuItem, ElSubMenu, ElIcon } from 'element-plus'
 import { Menu as IconMenu, User, Reading } from '@element-plus/icons-vue'
 import { useUserStore } from '../../stores/user'
@@ -12,27 +12,14 @@ const menuIconMap = {
   form: Reading,
 } as const
 
-// TODO icon
 export default {
   setup() {
     const userStore = useUserStore()
     const { menus } = storeToRefs(userStore)
 
-    const getMenuTitleWithIcon = (menu: MenuItem) => {
-      if (menu.icon) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        const Icon = menuIconMap[menu.icon]
-        if (Icon) {
-          return (
-            <>
-              <ElIcon>{h(Icon)}</ElIcon>
-              <span>{menu.title}</span>
-            </>
-          )
-        }
-      }
-      return menu.title
+    const getIcon = (iconName: string) => {
+      const Icon = menuIconMap[iconName as keyof typeof menuIconMap] || IconMenu
+      return <ElIcon>{h(Icon)}</ElIcon>
     }
 
     const generateMenus = (menus: MenuItem[]) =>
@@ -41,7 +28,12 @@ export default {
           return (
             <ElSubMenu key={menu.fullPath} index={menu.fullPath}>
               {{
-                title: () => getMenuTitleWithIcon(menu),
+                title: () => (
+                  <>
+                    {menu.icon && getIcon(menu.icon)}
+                    <span>{menu.title}</span>
+                  </>
+                ),
                 default: () => menu.children && generateMenus(menu.children),
               }}
             </ElSubMenu>
@@ -50,8 +42,8 @@ export default {
           return (
             <ElMenuItem key={menu.fullPath} index={menu.fullPath}>
               {{
-                // title: () => menu.title,
-                default: () => getMenuTitleWithIcon(menu),
+                title: () => menu.title,
+                default: () => menu.icon && getIcon(menu.icon),
               }}
             </ElMenuItem>
           )

@@ -11,8 +11,8 @@
     </div>
     <div class="ml-auto">
       <el-dropdown>
-        <span class="cursor-pointer">
-          <el-avatar> {{ nickname }} </el-avatar>
+        <span class="cursor-pointer flex items-center">
+          <el-avatar :src="avatar"> {{ nickname }} </el-avatar>
           <el-icon class="el-icon--right">
             <arrow-down />
           </el-icon>
@@ -47,7 +47,7 @@ const router = useRouter()
 const appStore = useAppStore()
 const userStore = useUserStore()
 const { isCollapse } = storeToRefs(appStore)
-const { nickname } = storeToRefs(userStore)
+const { nickname, avatar } = storeToRefs(userStore)
 const { toggleCollapse } = appStore
 
 const onClick = () => {

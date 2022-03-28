@@ -1,15 +1,22 @@
 <template>
-  <div class="container mx-auto text-center">
-    <el-button>Default</el-button>
-    <el-button type="primary">Primary</el-button>
-    <el-button type="success">Success</el-button>
-    <el-button type="info">Info</el-button>
-    <el-button type="warning">Warning</el-button>
-    <el-button type="danger">Danger</el-button>
-    <el-button>中文</el-button>
+  <div>
+    <el-descriptions title="User Info">
+      <el-descriptions-item label="nickname">
+        {{ nickname }}
+      </el-descriptions-item>
+      <el-descriptions-item label="roles">
+        {{ roles.join() }}
+      </el-descriptions-item>
+    </el-descriptions>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { storeToRefs } from 'pinia'
+import { useUserStore } from '../../stores/user'
+
+const store = useUserStore()
+const { nickname, roles } = storeToRefs(store)
+</script>
 
 <style scoped></style>

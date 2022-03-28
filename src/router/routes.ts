@@ -52,7 +52,7 @@ const routes: RouteRecordRaw[] = [
     },
     children: [
       {
-        path: '/:chapters*',
+        path: ':chapters*',
         component: () => import('@/views/menu/index.vue'),
       },
     ],
@@ -62,7 +62,10 @@ const routes: RouteRecordRaw[] = [
     name: 'login',
     component: Login,
   },
-  // { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
+  {
+    path: '/:pathMatch(.*)*',
+    component: () => import('@/views/error/404.vue'),
+  },
 ]
 
 export default routes

@@ -1,7 +1,11 @@
 <template>
-  <div>menu</div>
+  <div>route-path: {{ route.path }}</div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+</script>
 
 <style scoped></style>

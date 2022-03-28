@@ -16,11 +16,12 @@ export default router
 
 router.beforeEach(async (to, from) => {
   try {
+    console.log(to, from)
     NProgress.start()
-    // TODO
     const store = useUserStore()
     if (to.meta.auth) {
       if (store.username) {
+        // TODO 403
         return store.allowPath.includes(to.path)
       } else {
         await store.getUserInfo()

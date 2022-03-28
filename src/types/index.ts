@@ -29,3 +29,13 @@ export interface User {
   email: string
   roles: Role[]
 }
+
+export interface Page {
+  page: number
+  size: number
+}
+
+export interface PageResponse<T> {
+  total: number
+  list: T[]
+}
