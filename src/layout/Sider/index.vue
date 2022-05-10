@@ -21,13 +21,13 @@
 
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
-import { useAppStore } from '../store'
+import { useLayoutStore } from '../store'
 import { HomeFilled } from '@element-plus/icons-vue'
 import Logo from './Logo.vue'
 import Menus from './Menus.vue'
 import { useRoute } from 'vue-router'
 
-const store = useAppStore()
+const store = useLayoutStore()
 const route = useRoute()
 const { isCollapse } = storeToRefs(store)
 </script>

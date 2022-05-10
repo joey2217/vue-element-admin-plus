@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import type { UserInfo } from '@/types'
-import { fetchUserInfo, login } from '@/api/login'
+import { fetchUserInfo } from '@/api/login'
 import { flatTree } from '@/utils'
 
 export const useUserStore = defineStore('user', {

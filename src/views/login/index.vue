@@ -4,7 +4,10 @@
   >
     <el-card class="max-w-xl mx-auto">
       <template #header>
-        <div class="text-center font-bold text-xl">Login</div>
+        <div class="flex">
+          <div class="text-center font-bold text-xl flex-1">Login</div>
+          <ThemeSwitch />
+        </div>
       </template>
       <el-form ref="loginFormRef" :model="loginForm" label-width="80px">
         <el-form-item
@@ -53,6 +56,7 @@ import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import type { LoginData } from '@/types'
 import { login } from '@/api/login'
+import ThemeSwitch from '@/components/ThemeSwitch/index.vue'
 
 type FormInstance = InstanceType<typeof ElForm>
 

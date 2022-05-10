@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center h-full pr-4 shadow">
+  <div class="flex items-center h-full pr-4 shadow dark:shadow-white">
     <div
       class="cursor-pointer h-full flex items-center px-4 hover:text-[#409EFF]"
       @click="onClick"
@@ -10,6 +10,7 @@
       </el-icon>
     </div>
     <div class="ml-auto">
+      <ThemeSwitch class="mx-4" />
       <el-dropdown>
         <span class="cursor-pointer flex items-center">
           <el-avatar :src="avatar"> {{ nickname }} </el-avatar>
@@ -40,15 +41,16 @@
 import { useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { Expand, Fold, ArrowDown } from '@element-plus/icons-vue'
-import { useAppStore } from './store'
+import { useLayoutStore } from './store'
 import { useUserStore } from '../stores/user'
+import ThemeSwitch from '@/components/ThemeSwitch/index.vue'
 
 const router = useRouter()
-const appStore = useAppStore()
+const layoutStore = useLayoutStore()
 const userStore = useUserStore()
-const { isCollapse } = storeToRefs(appStore)
+const { isCollapse } = storeToRefs(layoutStore)
 const { nickname, avatar } = storeToRefs(userStore)
-const { toggleCollapse } = appStore
+const { toggleCollapse } = layoutStore
 
 const onClick = () => {
   toggleCollapse()

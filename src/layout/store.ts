@@ -1,13 +1,13 @@
 import { defineStore } from 'pinia'
 
-export interface AppState {
+export interface LayoutState {
   isCollapse: boolean
 }
 
 const COLLAPSE = 'collapse'
 
-export const useAppStore = defineStore('app', {
-  state: (): AppState => ({
+export const useLayoutStore = defineStore('layout', {
+  state: (): LayoutState => ({
     isCollapse: localStorage.getItem(COLLAPSE) === 'true' || false,
   }),
   actions: {
