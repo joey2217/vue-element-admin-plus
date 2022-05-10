@@ -9,7 +9,7 @@
         <fold v-else />
       </el-icon>
     </div>
-    <div class="ml-auto">
+    <div class="ml-auto flex items-center">
       <ThemeSwitch class="mx-4" />
       <el-dropdown>
         <span class="cursor-pointer flex items-center">
